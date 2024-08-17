@@ -1,0 +1,41 @@
+
+<div class="container mt-5">
+  <input
+    type="text"
+    class="form form-control mt-4"
+    [(ngModel)]="userName"
+    placeholder="Enter your name"
+  />
+  <p>{{ userName }}</p>
+  <button
+    [disabled]="checkEmptyOrNot()"
+    (click)="onReset()"
+    class="btn btn-primary mb-3"
+  >
+    Reset
+  </button>
+  <hr/>
+  <button (click)="toggleDetails()" class="btn btn-dark mb-5">
+    {{ buttonText }}
+  </button>
+  @if(showDetails)
+  {<p>Secret Password = tuna</p>}
+<hr/>
+  <!-- Output the log -->
+   @if(clickLog.length > 0){
+    <div class="mt-5">
+      <h5>Click Log:</h5>
+      <ul>
+        @for ( log of clickLog; track $index) {
+          <li
+            [ngStyle]="$index >= 4 ? itemsStyle : {}"
+            [ngClass]="{ 'text-white': $index >= 4 }"
+          >
+            {{ log }}
+          </li>
+        }
+      </ul>
+    </div>
+   }
+
+</div>
